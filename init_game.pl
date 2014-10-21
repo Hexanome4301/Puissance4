@@ -6,7 +6,13 @@
 
 :-dynamic(gamestateTampon/1).
  gamestateTampon([[],[],[],[],[],[],[]]).
- 
+
+:-dynamic(gamestateTampon2/1).
+ gamestateTampon2([[],[],[],[],[],[],[]]).
+
+:-dynamic(gamestateTampon3/1).
+ gamestateTampon3([[],[],[],[],[],[],[]]).
+
 :-dynamic(gamestateTest/1).
  gamestateTest([[x,x,x],[x,o],[],[],[x,x],[o,o,x],[x,x,x]]).
 
