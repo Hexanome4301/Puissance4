@@ -1,4 +1,3 @@
-%on a besoin d'une regle d'evaluation de l'etat du jeu
 %en fonction de si on a gagner, perdu, qu'on ai un avantage
 %ou un desavantage, la regle renvoie un certain score
 eval(GamestateEnCours,Joueur,Score):-

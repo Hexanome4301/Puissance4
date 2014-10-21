@@ -1,6 +1,6 @@
 % Dans ces deux regle on fait un scan total de la grille
 sv(Pion):-
-	(gamestate(Z),sv(Pion, Z,0),!); %en mettant une coupure ici des que la regle sera vrai elle n'ira pas tester les autres solution<div></div>
+	(gamestate(Z),sv(Pion, Z,0),!); %en mettant une coupure ici des que la regle sera vrai elle nira pas tester les autres solution
 	(gamestate(Z),sv(Pion, Z,1),!);
 	(gamestate(Z),sv(Pion, Z,2),!);
 	(gamestate(Z),sv(Pion, Z,3),!);
@@ -9,23 +9,23 @@ sv(Pion):-
 	(gamestate(Z),sv(Pion, Z,6)).
 
 % Solution verticale, pour une grille Z, on regarde si le Pion est vainqueur à la colonne (NumCol+1)
-sv(Pion, Z,NumCol):-
+sv(Pion,Z,NumCol):-
 
 	%length(Z,NbElements), NbElements > 3,
 	nth0(NumCol, Z, Y), nth0(0, Y, C1), nth0(1, Y, C2), nth0(2, Y, C3), nth0(3, Y, C4),
 	(C1==C2,C2==C3,C3==C4, Pion = C1).
 
-sv(Pion, Z,NumCol) :-
+sv(Pion,Z,NumCol):-
 
 	%length(Z,NbElements), NbElements > 3,
 	nth0(NumCol, Z, Y), nth0(1, Y, C2), nth0(2, Y, C3), nth0(3, Y, C4), nth0(4, Y, C5),
 	(C2==C3,C3==C4,C4==C5, Pion = C2).
 
-sv(Pion, Z,NumCol) :-
+sv(Pion,Z,NumCol):-
 
 	%length(Z,NbElements), NbElements > 3,
 	nth0(NumCol, Z, Y), nth0(2, Y, C3), nth0(3, Y, C4), nth0(4, Y, C5), nth0(5, Y, C6),
-	(C3==C4,C4==C5,C5==C6, Pion=C2) .
+	(C3==C4,C4==C5,C5==C6, Pion=C3).
 
 
 % on prend la premiere colone puis la deuxieme, puis ... Ensuite on prend le premier element de la colonne 1, puis le premier de la colonne 2, etc
@@ -138,7 +138,7 @@ sd(Pion):-
 (	diagSup6(Y6), length(Y6,NbElements), NbElements > 3, nth0(0, Y6, E1), nth0(1, Y6, E2), nth0(2, Y6, E3), nth0(3, Y6, E4),
 	forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula), not(E3 == []),Pion = E4).
 
-% Predicat qui vérifie si il y a une solution, qu'elle soit verticale, horizontale ou diagonale.
+% Predicat qui vérifie si il y a une solution, quelle soit verticale, horizontale ou diagonale.
 % En realisant un scan total de la grille de Jeu.
 % Version fonctionnnant avec LA grille de jeu reelle
 solution(Pion) :-
