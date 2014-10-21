@@ -49,7 +49,7 @@ nombrePionsAlignesVerticalement(NumColonne, Pion) :-
 	nombrePionsAlignesVerticalement(Colonne, Pion, TailleColonne, 0).
 
 % Condition d'arrêt si on a explorer toute la colonne
-nombrePionsAlignesVerticalement(Colonne, Pion, TailleColonne, PionAlignes) :-
+nombrePionsAlignesVerticalement(_, _, TailleColonne, PionAlignes):-
 	TailleColonne == 0,
 	!,
 	enregistrerDansEvalColonne(PionAlignes).
@@ -70,7 +70,7 @@ incrementeSiIdentique(Colonne, PionChoisi, Pion, PionAlignes, TailleColonne) :-
 	nombrePionsAlignesVerticalement(Colonne, Pion, TailleColonne2, PionAlignes2).
 
 % Si le pion choisi est différent du pion du joueur on recommence à zéro 
-incrementeSiIdentique(Colonne, PionChoisi, Pion, PionAlignes, TailleColonne) :-
+incrementeSiIdentique(Colonne, PionChoisi, Pion, _ , TailleColonne) :-
 	PionChoisi \= Pion,
 	!,
 	TailleColonne2 is (TailleColonne - 1),
@@ -103,7 +103,7 @@ nbElementsDansListe(Liste, Element, Iteration, Nombre) :-
 	!,
 	nbElementsDansListe_(Liste, Element, Iteration, Nombre).
 
-nbElementsDansListe(Liste, Element, Iteration, Nombre) :-
+nbElementsDansListe(Liste, _ , Iteration, Nombre) :-
 	length(Liste, TailleListe),
 	Iteration > TailleListe,
 	!,
