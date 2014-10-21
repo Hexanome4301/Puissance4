@@ -7,7 +7,7 @@
 :-dynamic(gamestateTampon/1).
  gamestateTampon([[],[],[],[],[],[],[]]).
  
-:-dynamic(gamestateTampon/1).
+:-dynamic(gamestateTest/1).
  gamestateTest([[x,x,x],[x,o],[],[],[x,x],[o,o,x],[x,x,x]]).
 
 
