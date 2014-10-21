@@ -1,11 +1,11 @@
 %lancer la commande load_files(init_game). en ligne de cmd pour bien
 % charger ce fichier
 
-:-dynamic(gamestate/1).
+:-dynamic(gamestateTest/1).
  gamestate([[],[],[],[],[],[],[]]).
 
-:-dynamic(gamestateTampon/1).
- gamestateTampon([[],[],[],[],[],[],[]]).
+:-dynamic(gamestateTestTampon/1).
+ gamestateTestTampon([[],[],[],[],[],[],[]]).
 
 :-dynamic(gamestateTampon2/1).
  gamestateTampon2([[],[],[],[],[],[],[]]).
@@ -14,7 +14,8 @@
  gamestateTampon3([[],[],[],[],[],[],[]]).
 
 :-dynamic(gamestateTest/1).
- gamestateTest([[x,x,x],[x,o],[],[],[x,x],[o,o,x],[x,x,x]]).
+ gamestateTest([[x],[x],[],[],[x],[o],[x]]).
+ %gamestateTest([[],[],[x],[x],[],[],[]]).
 
 
 %inclut les clauses des fichiers jouer.pl et aGagner.pl
