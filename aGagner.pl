@@ -15,13 +15,13 @@ sv(Pion,Z,NumCol):-
 	nth0(NumCol, Z, Y), nth0(0, Y, C1), nth0(1, Y, C2), nth0(2, Y, C3), nth0(3, Y, C4),
 	(C1==C2,C2==C3,C3==C4, Pion = C1).
 
-sv(Pion,Z,NumCol):-
+sv(Pion, Z, NumCol) :-
 
 	%length(Z,NbElements), NbElements > 3,
 	nth0(NumCol, Z, Y), nth0(1, Y, C2), nth0(2, Y, C3), nth0(3, Y, C4), nth0(4, Y, C5),
 	(C2==C3,C3==C4,C4==C5, Pion = C2).
 
-sv(Pion,Z,NumCol):-
+sv(Pion, Z, NumCol) :-
 
 	%length(Z,NbElements), NbElements > 3,
 	nth0(NumCol, Z, Y), nth0(2, Y, C3), nth0(3, Y, C4), nth0(4, Y, C5), nth0(5, Y, C6),
@@ -30,7 +30,6 @@ sv(Pion,Z,NumCol):-
 
 % on prend la premiere colone puis la deuxieme, puis ... Ensuite on prend le premier element de la colonne 1, puis le premier de la colonne 2, etc
 
-%WORK WORK WORK !
 sh(Pion):-
 	(gamestate(Z),sh(Pion,Z,0),!);
 	(gamestate(Z),sh(Pion,Z,1),!);
@@ -97,20 +96,20 @@ sd(Pion):-
 	forall(member(Result = Formula, [E2 = E3, E3 = E4, E4 = E5]),Result == Formula);
 	forall(member(Result = Formula, [E3 = E4, E4 = E5, E5 = E6]),Result == Formula)), not(E3 == []),Pion = E4);
 
-(	diagInf4(X4), length(X4,NbElements), NbElements > 3, nth0(0, X4, E1), nth0(1, X4, E2), nth0(2, X4, E3), nth0(3, X4, E4),
+(	diagInf4(X4), length(X4,NbElements), NbElements > 3, nth0(1, X4, E1), nth0(2, X4, E2), nth0(3, X4, E3), nth0(4, X4, E4),
 	nth0(4, X4, E5), nth0(5 , X4, E6),
 	(forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula);
 	forall(member(Result = Formula, [E2 = E3, E3 = E4, E4 = E5]),Result == Formula);
 	forall(member(Result = Formula, [E3 = E4, E4 = E5, E5 = E6]),Result == Formula)), not(E4 == []),Pion = E4);
 
-(	diagInf5(X5), length(X5,NbElements), NbElements > 3, nth0(0, X5, E1), nth0(1, X5, E2), nth0(2, X5, E3), nth0(3, X5, E4), nth0(4, X5, E5),
+(	diagInf5(X5), length(X5,NbElements), NbElements > 3, nth0(2, X5, E1), nth0(3, X5, E2), nth0(4, X5, E3), nth0(5, X5, E4), nth0(6, X5, E5),
 	(forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula);
 	forall(member(Result = Formula, [E2 = E3, E3 = E4, E4 = E5]),Result == Formula)), not(E4 == []),Pion = E4);
 
-(	diagInf6(X6), length(X6,NbElements), NbElements > 3, nth0(0, X6, E1), nth0(1, X6, E2), nth0(2, X6, E3), nth0(3, X6, E4),
-	forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula), not(E3 == []),Pion = E4);
+(	diagInf6(X6), length(X6,NbElements), NbElements > 3, nth0(3, X6, E1), nth0(4, X6, E2), nth0(5, X6, E3), nth0(6, X6, E4),
+	forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula), not(E3 == []),Pion = E4).
 
-	% DiagSUP
+sd(Pion) :-
 
 (	diagSup1(Y1), length(Y1,NbElements), NbElements > 3, nth0(0, Y1, E1), nth0(1, Y1, E2), nth0(2, Y1, E3), nth0(3, Y1, E4),
 	forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula), not(E1 == []),Pion = E4);
@@ -125,20 +124,21 @@ sd(Pion):-
 	forall(member(Result = Formula, [E2 = E3, E3 = E4, E4 = E5]),Result == Formula);
 	forall(member(Result = Formula, [E3 = E4, E4 = E5, E5 = E6]),Result == Formula)), not(E3 == []),Pion = E4);
 
-(	diagSup4(Y4), length(Y4,NbElements), NbElements > 3, nth0(0, Y4, E1), nth0(1, Y4, E2), nth0(2, Y4, E3), nth0(3, Y4, E4),
+(	diagSup4(Y4), length(Y4,NbElements), NbElements > 3, nth0(1, Y4, E1), nth0(2, Y4, E2), nth0(3, Y4, E3), nth0(4, Y4, E4),
 	nth0(4, Y4, E5), nth0(5 , Y4, E6),
 	(forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula);
 	forall(member(Result = Formula, [E2 = E3, E3 = E4, E4 = E5]),Result == Formula);
 	forall(member(Result = Formula, [E3 = E4, E4 = E5, E5 = E6]),Result == Formula)), not(E4 == []),Pion = E4);
 
-(	diagSup5(Y5), length(Y5,NbElements), NbElements > 3, nth0(0, Y5, E1), nth0(1, Y5, E2), nth0(2, Y5, E3), nth0(3, Y5, E4), nth0(4, Y5, E5),
+(	diagSup5(Y5), length(Y5,NbElements), NbElements > 3, nth0(2, Y5, E1), nth0(3, Y5, E2), nth0(4, Y5, E3), nth0(5, Y5, E4), nth0(6, Y5, E5),
 	(forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula);
 	forall(member(Result = Formula, [E2 = E3, E3 = E4, E4 = E5]),Result == Formula)), not(E4 == []),Pion = E4);
 
-(	diagSup6(Y6), length(Y6,NbElements), NbElements > 3, nth0(0, Y6, E1), nth0(1, Y6, E2), nth0(2, Y6, E3), nth0(3, Y6, E4),
+(	diagSup6(Y6), length(Y6,NbElements), NbElements > 3, nth0(3, Y6, E1), nth0(4, Y6, E2), nth0(5, Y6, E3), nth0(6, Y6, E4),
 	forall(member(Result = Formula, [E1 = E2, E2 = E3, E3 = E4]),Result == Formula), not(E3 == []),Pion = E4).
 
-% Predicat qui vérifie si il y a une solution, quelle soit verticale, horizontale ou diagonale.
+
+% Predicat qui vérifie si il y a une solution, qu'elle soit verticale, horizontale ou diagonale.
 % En realisant un scan total de la grille de Jeu.
 % Version fonctionnnant avec LA grille de jeu reelle
 solution(Pion) :-
