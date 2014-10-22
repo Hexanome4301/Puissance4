@@ -25,6 +25,7 @@ testGagner(Pion, NumColonne,LigneDuNouvelElem) :-
 
 	changerPion(Pion, Adversaire),
 	write('\n Au tour de '),write(Adversaire), write(' de jouer\n'),
+	sleep(2),
 	partieAleatoire(Adversaire),!.
 
 
