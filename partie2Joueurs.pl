@@ -56,6 +56,18 @@ testGagner2Joueurs(Pion,LigneDuNouvelElem,NumColonne) :-
 
 
 finPartie :-
+	retract(diagInf1(_)) , assert(diagInf1([[],[],[],[],[z],[z],[z]])),
+	retract(diagInf2(_)) , assert(diagInf2([[],[],[],[],[],[z],[z]])),
+	retract(diagInf3(_)) , assert(diagInf3([[],[],[],[],[],[],[z]])),
+	retract(diagInf4(_)) , assert(diagInf4([[z],[],[],[],[],[],[]])),
+	retract(diagInf5(_)) , assert(diagInf5([[z],[z],[],[],[],[],[]])),
+	retract(diagInf6(_)) , assert(diagInf6([[z],[z],[z],[],[],[],[]])),
+	retract(diagSup1(_)) , assert(diagSup1([[],[],[],[],[z],[z],[z]])),
+	retract(diagSup2(_)) , assert(diagSup2([[],[],[],[],[],[z],[z]])),
+	retract(diagSup3(_)) , assert(diagSup3([[],[],[],[],[],[],[z]])),
+	retract(diagSup4(_)) , assert(diagSup4([[z],[],[],[],[],[],[]])),
+	retract(diagSup5(_)) , assert(diagSup5([[z],[z],[],[],[],[],[]])),
+	retract(diagSup6(_)) , assert(diagSup6([[z],[z],[z],[],[],[],[]])),
 	retract(gamestate(_)) , assert(gamestate([[],[],[],[],[],[],[]])).
 
 changerPion(x, NouveauPion) :-
@@ -63,3 +75,5 @@ changerPion(x, NouveauPion) :-
 
 changerPion(o, NouveauPion) :-
 	NouveauPion = x.
+
+

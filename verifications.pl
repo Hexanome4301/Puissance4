@@ -132,6 +132,10 @@ insertDiag(Ligne, Colonne, Couleur):-
 	insertInDiagInf(Ligne, Colonne, Couleur).
 insertDiag(Ligne, Colonne, Couleur).
 ￼￼
+retract(gamestate(_)) , assert(gamestate([[],[],[],[],[],[],[]])).
+
+
+
 
 
 
