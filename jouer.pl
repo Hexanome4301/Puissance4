@@ -39,7 +39,7 @@ jouer(Jeton,2,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestate(_)),
 	assert(gamestate([C1,NewCol,C3,C4,C5,C6,C7])),
-	gamestate(Newgamestate).
+	gamestate(Newgamestate),
 	nth0(1, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,2,Jeton).
 
 jouer(Jeton,3,Newgamestate,LigneDuNouvelElem):-
@@ -56,7 +56,7 @@ jouer(Jeton,3,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestate(_)),
 	assert(gamestate([C1,C2,NewCol,C4,C5,C6,C7])),
-	gamestate(Newgamestate).
+	gamestate(Newgamestate),
 	nth0(2, Newgamestate, NewCol), length(NewCol, L),insertDiag(L,3,Jeton).
 
 jouer(Jeton,4,Newgamestate,LigneDuNouvelElem):-
@@ -73,7 +73,7 @@ jouer(Jeton,4,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestate(_)),
 	assert(gamestate([C1,C2,C3,NewCol,C5,C6,C7])),
-	gamestate(Newgamestate).
+	gamestate(Newgamestate),
 	nth0(3, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,4,Jeton).
 
 jouer(Jeton,5,Newgamestate,LigneDuNouvelElem):-
@@ -90,7 +90,7 @@ jouer(Jeton,5,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestate(_)),
 	assert(gamestate([C1,C2,C3,C4,NewCol,C6,C7])),
-	gamestate(Newgamestate).
+	gamestate(Newgamestate),
 	nth0(4, Newgamestate, NewCol), length(NewCol, L),insertDiag(L,5,Jeton).
 
 jouer(Jeton,6,Newgamestate,LigneDuNouvelElem):-
@@ -107,7 +107,7 @@ jouer(Jeton,6,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestate(_)),
 	assert(gamestate([C1,C2,C3,C4,C5,NewCol,C7])),
-	gamestate(Newgamestate).
+	gamestate(Newgamestate),
 	nth0(5, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,6,Jeton).
 
 jouer(Jeton,7,Newgamestate,LigneDuNouvelElem):-
@@ -124,7 +124,7 @@ jouer(Jeton,7,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestate(_)),
 	assert(gamestate([C1,C2,C3,C4,C5,C6,NewCol])),
-	gamestate(Newgamestate).
+	gamestate(Newgamestate),
 	nth0(6, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,7,Jeton).
 
 simulationCoup(Jeton,NumCol,Newgamestate):-
