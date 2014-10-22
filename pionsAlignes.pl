@@ -280,23 +280,23 @@ nbSeries1Diagonales(Pion, Nombre) :-
 seriesDiagonales(Pion) :-
 	retract(evalDiagonale(_)), assert(evalDiagonale([])),
 	diagInf1(DiagInf1), evalDiagonale(DiagInf1, Pion),
-	diagInf2(DiagInf2), evalDiagonale(DiagInf2, Pion).
+	diagInf2(DiagInf2), evalDiagonale(DiagInf2, Pion),
 	diagInf3(DiagInf3), evalDiagonale(DiagInf3, Pion),
 	diagInf4(DiagInf4), evalDiagonale(DiagInf4, Pion),
 	diagInf5(DiagInf5), evalDiagonale(DiagInf5, Pion),
 	diagInf6(DiagInf6), evalDiagonale(DiagInf6, Pion),
 
 	diagSup1(DiagSup1), evalDiagonale(DiagSup1, Pion),
-	diagSup2(DiagSup1), evalDiagonale(DiagSup2, Pion),
-	diagSup3(DiagSup1), evalDiagonale(DiagSup3, Pion),
-	diagSup4(DiagSup1), evalDiagonale(DiagSup4, Pion),
-	diagSup5(DiagSup1), evalDiagonale(DiagSup5, Pion),
-	diagSup6(DiagSup1), evalDiagonale(DiagSup6, Pion).
+	diagSup2(DiagSup2), evalDiagonale(DiagSup2, Pion),
+	diagSup3(DiagSup3), evalDiagonale(DiagSup3, Pion),
+	diagSup4(DiagSup4), evalDiagonale(DiagSup4, Pion),
+	diagSup5(DiagSup5), evalDiagonale(DiagSup5, Pion),
+	diagSup6(DiagSup6), evalDiagonale(DiagSup6, Pion).
 
 evalDiagonale(Diagonale, Pion) :-
 	evalDiagonale(Diagonale, Pion, 0, 1).
 
-evalDiagonale(Diagonale, Pion, PionsAlignes, Iteration) :-
+evalDiagonale(_, _, PionsAlignes, Iteration) :-
 	Iteration > 7,
 	!,
 	enregistrerDansEvalDiagonale(PionsAlignes).
@@ -305,24 +305,24 @@ evalDiagonale(Diagonale, Pion, PionsAlignes, Iteration) :-
 	Iteration =< 7,
 	!,
 	nth1(Iteration, Diagonale, PionChoisi),
-	incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, Zeros, Iteration).
+	incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, _, Iteration).
 
 
-incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, Zeros, Iteration) :-
+incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, _, Iteration) :-
 	PionChoisi == [Pion],
 	!,
 	Iteration2 is Iteration + 1,
 	PionsAlignes2 is PionsAlignes + 1,
 	evalDiagonale(Diagonale, Pion, PionsAlignes2, Iteration2).
 
-incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, Zeros, Iteration) :-
+incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, _, Iteration) :-
 	PionChoisi \= [Pion],
 	!,
 	Iteration2 is Iteration + 1,
 	enregistrerDansEvalDiagonale(PionsAlignes),
 	evalDiagonale(Diagonale, Pion, 0, Iteration2).
 
-incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, Zeros, Iteration) :-
+incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, _, Iteration) :-
 	Z = z,
 	PionChoisi == Z,
 	!,
