@@ -1,11 +1,11 @@
 %lancer la commande load_files(init_game). en ligne de cmd pour bien
 % charger ce fichier
 
-:-dynamic(gamestateTest/1).
+:-dynamic(gamestate/1).
  gamestate([[],[],[],[],[],[],[]]).
 
-:-dynamic(gamestateTestTampon/1).
- gamestateTestTampon([[],[],[],[],[],[],[]]).
+:-dynamic(gamestateTampon/1).
+ gamestateTampon([[],[],[],[],[],[],[]]).
 
 :-dynamic(gamestateTampon2/1).
  gamestateTampon2([[],[],[],[],[],[],[]]).
