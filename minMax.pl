@@ -23,7 +23,7 @@ eval(GamestateEnCours,_,Score):-
 % C'est a partir de ce nouvel etat de jeu que l'adversaire devra jouer un coup. Il cherchera donc a minimiser notre score.
 % Parmi tous les score min (proposé par l'adversaire) qui s'offrent à l'IA,
 % faudra qu'il choisisse le plus élevé (car il veut maximiser son score).
-iaMinMax(Joueur,CoupDAvance):-
+iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem):-
 	gamestate(X),
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon(X)),
@@ -38,9 +38,12 @@ iaMinMax(Joueur,CoupDAvance):-
 
 	% ici une regle recursive sur la liste de coupPossible.
 	%Fais jouer un coup, regarde le poid du coup prochain et compare les deux poids et renvoie le meilleur poids
-	simul(Joueur,CoupDAvance,ListeDeCoup,_,MeilleurCoup),
-	jouer(Joeur,MeilleurCoup,_).
+	simul(Joueur,CoupDAvance,ListeDeCoup,Poids,MeilleurCoup),
+	joueIa(Joueur,MeilleurCoup,Poids,LigneDuNouvelElem).
 
+joueIa(Joueur,MeilleurCoup,Poids,LigneDuNouvelElem):-
+	(Poids=0 , iaRandom(Joueur,Coup,LigneDuNouvelElem));
+	(not(Poids=0), jouer(Joueur,MeilleurCoup,_,LigneDuNouvelElem)).
 
 %condition d'arret:
 %Lorsqu'il n'y a plus de coup possible a jouer -> [].
