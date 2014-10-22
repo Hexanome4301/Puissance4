@@ -31,5 +31,6 @@
 :-include(minMaxAmeliore).
 :-include(partie2Joueurs).
 :-include(pionsAlignes).
-:-include(partieAleatoire).
+%:-include(partieAleatoire).
+:-include(partieIA).
 

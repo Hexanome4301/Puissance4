@@ -9,7 +9,9 @@ iteration([6,5,4,3,2,1]).
 afficherGrille :-
 	iteration(Y), Y = [Tete|_],
 	write('\n   ________________________________________\n'),
-	gamestate(X), afficherGrille(X, Tete).
+	gamestate(X), nth1(1, X, Col1), nth1(2, X, Col2), nth1(3, X, Col3), nth1(4, X, Col4), nth1(5, X, Col5), nth1(6, X, Col6), nth1(7, X, Col7),
+	reverse(Col1, Col1_), reverse(Col2, Col2_), reverse(Col3, Col3_), reverse(Col4, Col4_), reverse(Col5, Col5_), reverse(Col6, Col6_), reverse(Col7, Col7_),
+	afficherGrille([Col1_, Col2_, Col3_, Col4_, Col5_, Col6_, Col7_], Tete).
 
 
 %regle d'arrivee a la fin du ligne

@@ -17,12 +17,12 @@ eval2(GamestateEnCours,_,Score):-
 
 	%ici pas de vainqueur on calcul l'avantage
 	%par exemple l'avantage est donné pour la difference du nombre de série de 3 pions aligné par rapport a l'adversaire
-	nbSeries3Horizontales(m, Nb1),
-	nbSeries3Verticales(m, Nb2),
+	nbSeries2Horizontales(m, Nb1),
+	nbSeries2Verticales(m, Nb2),
 
-	nbSeries3Horizontales(x, Nb3),
-	nbSeries3Verticales(x, Nb4),
-	Score = (Nb1 + Nb2) - (Nb3+ Nb4) .
+	nbSeries2Horizontales(x, Nb3),
+	nbSeries2Verticales(x, Nb4),
+	Score is (Nb1 + Nb2) - (Nb3+ Nb4) .
 
 %Principe: L'IA (joueur m) en fonction d'un certain nombre de CoupDAvance et en fonction de sa ListeDeCoup possible
 % va chercher le meilleur coup a jouer et le jouera.
@@ -31,7 +31,7 @@ eval2(GamestateEnCours,_,Score):-
 % C'est a partir de ce nouvel etat de jeu que l'adversaire devra jouer un coup. Il cherchera donc a minimiser notre score.
 % Parmi tous les score min2 (proposé par l'adversaire) qui s'offrent à l'IA,
 % faudra qu'il choisisse le plus élevé (car il veut maximiser son score).
-iaMinMaxAmeliore(CoupDAvance):-
+iaMinMaxAmeliore(CoupDAvance,PoidsDuCoup):-
 	gamestate(X),
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon(X)),
@@ -46,7 +46,7 @@ iaMinMaxAmeliore(CoupDAvance):-
 
 	% ici une regle recursive sur la liste de coupPossible.
 	%Fais jouer un coup, regarde le poid du coup prochain et compare les deux poids et renvoie le meilleur poids
-	simul2(m,CoupDAvance,ListeDeCoup,_,MeilleurCoup),
+	simul2(m,CoupDAvance,ListeDeCoup,PoidsDuCoup,MeilleurCoup),
 	jouer(m,MeilleurCoup,_).
 
 
@@ -55,7 +55,7 @@ iaMinMaxAmeliore(CoupDAvance):-
 %On choisit des valeur par defaut pour 'Poids' et 'Coup'.
 %Le Poids sera comparé à un vrai poids calculé à partir d'un coup de l'adversaire
 simul2(_,_,[],Poids,Coup):-
-	Poids = -100000000,
+	Poids = 0,
 	Coup = 4.
 
 
@@ -104,7 +104,7 @@ min2(GamestateEnCours,Joueur,0, Result, _ ):-
 %condition d'arret :
 %-infini represente le pire poid possible pour commencer nos comparaison
 simulAdversaire2(_,_,[],PirePoids,4):-
-	PirePoids = 100000000.
+	PirePoids = 0.
 
 % recursion interne dans min2 ou l'adversaire teste tous les coup possible et donne le poid du coup et le coup associe
 simulAdversaire2(Joueur,ProfondeurEnCours,ListeDeCoup,PirePoids,PireCoup):-
