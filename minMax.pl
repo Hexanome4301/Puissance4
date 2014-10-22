@@ -42,7 +42,7 @@ iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem):-
 	joueIa(Joueur,MeilleurCoup,Poids,LigneDuNouvelElem).
 
 joueIa(Joueur,MeilleurCoup,Poids,LigneDuNouvelElem):-
-	(Poids=0 , iaRandom(Joueur,Coup,LigneDuNouvelElem));
+	(Poids=0 , iaRandom(Joueur,_,LigneDuNouvelElem));
 	(not(Poids=0), jouer(Joueur,MeilleurCoup,_,LigneDuNouvelElem)).
 
 %condition d'arret:
@@ -151,7 +151,7 @@ meilleurCoup(PoidsDuCoupActuel,PoidsDuCoupSuivant,PirePoids,CoupAssocie,_,Meille
 	not(PoidsDuCoupActuel = PoidsDuCoupSuivant),
 	MeilleurCoup = CoupAssocie , ! .
 
-meilleurCoup(PoidsDuCoupActuel,PoidsDuCoupSuivant,PirePoids,_,CoupSuivantAssocie,MeilleurCoup):-
+meilleurCoup(_,PoidsDuCoupSuivant,PirePoids,_,CoupSuivantAssocie,MeilleurCoup):-
 	PoidsDuCoupSuivant = PirePoids,
 	MeilleurCoup = CoupSuivantAssocie, ! .
 
@@ -160,7 +160,7 @@ pireCoup(PoidsDuCoupActuel,PoidsDuCoupSuivant,MeilleurCoup,CoupAssocie,_,PireCou
 	not(PoidsDuCoupActuel = PoidsDuCoupSuivant),
 	PireCoup = CoupAssocie , ! .
 
-pireCoup(PoidsDuCoupActuel,PoidsDuCoupSuivant,MeilleurCoup,_,CoupSuivantAssocie,PireCoup):-
+pireCoup(_,PoidsDuCoupSuivant,MeilleurCoup,_,CoupSuivantAssocie,PireCoup):-
 	PoidsDuCoupSuivant = MeilleurCoup,
 
 	PireCoup = CoupSuivantAssocie, ! .
