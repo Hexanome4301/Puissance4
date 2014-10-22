@@ -116,6 +116,12 @@ displayAllDiags:-
 	listing(diagSup5),
 	listing(diagSup6).
 
+accReverse([ ],L,L). 
+accReverse([H|T],Acc,Rev):-
+accReverse(T,[H|Acc],Rev).
+
+reverseList(L1,L2):- accReverse(L1,[ ],L2).
+
 % Predicat qui insère un élément dans la diagonale à laquelle il appartient
 insertDiag(Ligne, Colonne, Couleur):-
 	insertInDiagInf(Ligne, Colonne, Couleur),
@@ -126,10 +132,6 @@ insertDiag(Ligne, Colonne, Couleur):-
 	insertInDiagInf(Ligne, Colonne, Couleur).
 insertDiag(Ligne, Colonne, Couleur).
 ￼￼
-accReverse([ ],L,L). 
-accReverse([H|T],Acc,Rev):-
-accReverse(T,[H|Acc],Rev).
 
-reverseList(L1,L2):- accReverse(L1,[ ],L2).
 
 

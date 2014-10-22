@@ -44,8 +44,7 @@ sh(Pion, Z, LineNumber) :-
 	nth0(0, Z, C1), nth0(1, Z, C2), nth0(2, Z, C3), nth0(3, Z, C4),
 	length(C1,LengthC1), length(C2,LengthC2),length(C3,LengthC3),length(C4,LengthC4),
 	not(LengthC1=0),not(LengthC2=0),not(LengthC3=0),not(LengthC4=0),
-	reverse(C1,C1r),reverse(C2,C2r),reverse(C3,C3r),reverse(C4,C4r),
-	nth0(LineNumber, C1r, E1),nth0(LineNumber, C2r, E2),nth0(LineNumber, C3r, E3),nth0(LineNumber, C4r, E4),
+	nth0(LineNumber, C1, E1),nth0(LineNumber, C2, E2),nth0(LineNumber, C3, E3),nth0(LineNumber, C4, E4),
 	E1==E2,E2==E3,E3==E4,E4==E1,
 	Pion = E1, !.	% ainsi on peut demander aussi qui est le vainqueur si on met une variable dans Pion
 
@@ -54,8 +53,7 @@ sh(Pion, Z, LineNumber) :-
 	nth0(1, Z, C1), nth0(2, Z, C2), nth0(3, Z, C3), nth0(4, Z, C4),
 	length(C1,LengthC1), length(C2,LengthC2),length(C3,LengthC3),length(C4,LengthC4),
 	not(LengthC1=0),not(LengthC2=0),not(LengthC3=0),not(LengthC4=0),
-	reverse(C1,C1r),reverse(C2,C2r),reverse(C3,C3r),reverse(C4,C4r),
-	nth0(LineNumber, C1r, E1),nth0(LineNumber, C2r, E2),nth0(LineNumber, C3r, E3),nth0(LineNumber, C4r, E4),
+	nth0(LineNumber, C1, E1),nth0(LineNumber, C2, E2),nth0(LineNumber, C3, E3),nth0(LineNumber, C4, E4),
 	%forall(member(A==B,[E1==E2,E2==E3,E3==E4,E4==E1]),A==B),Pion = B.
 	E1==E2,E2==E3,E3==E4,E4==E1,
 	Pion = E1,!.
@@ -64,8 +62,7 @@ sh(Pion, Z, LineNumber) :-
 	nth0(2, Z, C1), nth0(3, Z, C2), nth0(4, Z, C3), nth0(5, Z, C4),
 	length(C1,LengthC1), length(C2,LengthC2),length(C3,LengthC3),length(C4,LengthC4),
 	not(LengthC1=0),not(LengthC2=0),not(LengthC3=0),not(LengthC4=0),
-	reverse(C1,C1r),reverse(C2,C2r),reverse(C3,C3r),reverse(C4,C4r),
-	nth0(LineNumber, C1r, E1),nth0(LineNumber, C2r, E2),nth0(LineNumber, C3r, E3),nth0(LineNumber, C4r, E4),
+	nth0(LineNumber, C1, E1),nth0(LineNumber, C2, E2),nth0(LineNumber, C3, E3),nth0(LineNumber, C4, E4),
 	%forall(member(A==B,[E1==E2,E2==E3,E3==E4,E4==E1]),A==B),Pion = B.
 	E1==E2,E2==E3,E3==E4,E4==E1,
 	Pion = E1,!. % ainsi on peut demander aussi qui est le vainqueur si on met une variable dans Pion
@@ -74,8 +71,7 @@ sh(Pion, Z, LineNumber) :-
 	nth0(3, Z, C1), nth0(4, Z, C2), nth0(5, Z, C3), nth0(6, Z, C4),
 	length(C1,LengthC1), length(C2,LengthC2),length(C3,LengthC3),length(C4,LengthC4),
 	not(LengthC1=0),not(LengthC2=0),not(LengthC3=0),not(LengthC4=0),
-	reverse(C1,C1r),reverse(C2,C2r),reverse(C3,C3r),reverse(C4,C4r),
-	nth0(LineNumber, C1r, E1),nth0(LineNumber, C2r, E2),nth0(LineNumber, C3r, E3),nth0(LineNumber, C4r, E4),
+	nth0(LineNumber, C1, E1),nth0(LineNumber, C2, E2),nth0(LineNumber, C3, E3),nth0(LineNumber, C4, E4),
 	%forall(member(A==B,[E1==E2,E2==E3,E3==E4,E4==E1]),A==B),Pion = B.
 	E1==E2,E2==E3,E3==E4,E4==E1,
 	Pion = E1,!. % ainsi on peut demander aussi qui est le vainqueur si on met une variable dans Pion
