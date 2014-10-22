@@ -1,17 +1,17 @@
 	
 % Declaration des diagonales inferieures ainsi que leurs positions.
 :-dynamic(diagInf1/1).
-diagInf1([[z],[z],[z],[z],[z],[z],[z]]).
+diagInf1([[],[],[],[],[z],[z],[z]]).
 :-dynamic(diagInf2/1).
-diagInf2([[z],[z],[z],[z],[z],[z],[z]]).
+diagInf2([[],[],[],[],[],[z],[z]]).
 :-dynamic(diagInf3/1).
-diagInf3([[z],[z],[z],[z],[z],[z],[z]]).
+diagInf3([[],[],[],[],[],[],[z]]).
 :-dynamic(diagInf4/1).
-diagInf4([[z],[z],[z],[z],[z],[z],[z]]).
+diagInf4([[z],[],[],[],[],[],[]]).
 :-dynamic(diagInf5/1).
-diagInf5([[z],[z],[z],[z],[z],[z],[z]]).
+diagInf5([[z],[z],[],[],[],[],[]]).
 :-dynamic(diagInf6/1).
-diagInf6([[z],[z],[z],[z],[z],[z],[z]]).
+diagInf6([[z],[z],[z],[],[],[],[]]).
 
 :-dynamic(diagInf1Elem/1).
 diagInf1Elem([[4,1], [3,2], [2,3], [1,4]]).
@@ -29,17 +29,17 @@ diagInf6Elem([[6,4], [5,5], [4,6], [3,7]]).
 
 % Declaration des diagonales superieures ainsi que leurs positions.
 :-dynamic(diagSup1/1).
-diagSup1([[z],[z],[z],[z],[z],[z],[z]]).
+diagSup1([[],[],[],[],[z],[z],[z]]).
 :-dynamic(diagSup2/1).
-diagSup2([[z],[z],[z],[z],[z],[z],[z]]).
+diagSup2([[],[],[],[],[],[z],[z]]).
 :-dynamic(diagSup3/1).
-diagSup3([[z],[z],[z],[z],[z],[z],[z]]).
+diagSup3([[],[],[],[],[],[],[z]]).
 :-dynamic(diagSup4/1).
-diagSup4([[z],[z],[z],[z],[z],[z],[z]]).
+diagSup4([[z],[],[],[],[],[],[]]).
 :-dynamic(diagSup5/1).
-diagSup5([[z],[z],[z],[z],[z],[z],[z]]).
+diagSup5([[z],[z],[],[],[],[],[]]).
 :-dynamic(diagSup6/1).
-diagSup6([[z],[z],[z],[z],[z],[z],[z]]).
+diagSup6([[z],[z],[z],[],[],[],[]]).
 
 :-dynamic(diagSup1Elem/1).
 diagSup1Elem([[3,1], [4,2], [5,3], [6,4]]).
