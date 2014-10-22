@@ -7,32 +7,32 @@ evalLigne([]).
 
 :-dynamic(temp/1).
 temp([]).
-	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%% Vérification verticale %%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 nbSeries3Verticales(Pion, Nombre) :-
 	seriesVerticales(Pion),
 	evalColonne(Eval),
-	nbElementsDansListe(Eval, 3, 1, 0), 
+	nbElementsDansListe(Eval, 3, 1, 0),
 	temp(X), nth1(1, X, Resultat),
 	Nombre is Resultat.
-	
+
 nbSeries2Verticales(Pion, Nombre) :-
 	seriesVerticales(Pion),
 	evalColonne(Eval),
-	nbElementsDansListe(Eval, 2, 1, 0), 
+	nbElementsDansListe(Eval, 2, 1, 0),
 	temp(X), nth1(1, X, Resultat),
 	Nombre is Resultat.
 
 nbSeries1Verticales(Pion, Nombre) :-
 	seriesVerticales(Pion),
 	evalColonne(Eval),
-	nbElementsDansListe(Eval, 1, 1, 0), 
+	nbElementsDansListe(Eval, 1, 1, 0),
 	temp(X), nth1(1, X, Resultat),
 	Nombre is Resultat.
-	
+
 seriesVerticales(Pion) :-
 	retract(evalColonne(_)), assert(evalColonne([])),
 	nombrePionsAlignesVerticalement(1, Pion),
@@ -45,7 +45,6 @@ seriesVerticales(Pion) :-
 
 % On effectue la vérification pour un pion et une colonne donnés
 nombrePionsAlignesVerticalement(NumColonne, Pion) :-
-	gamestateTest(X), nth1(NumColonne, X, Col),
 	gamestate(X), nth1(NumColonne, X, Col),
 	% On renverse la colonne car on parcours à l'envers (depuis tailleColonne jusqu'à 0)
 	reverse(Col, Colonne),
@@ -73,7 +72,7 @@ incrementeSiIdentique(Colonne, PionChoisi, Pion, PionsAlignes, TailleColonne) :-
 	TailleColonne2 is (TailleColonne - 1),
 	nombrePionsAlignesVerticalement(Colonne, Pion, TailleColonne2, PionsAlignes2).
 
-% Si le pion choisi est différent du pion du joueur on recommence à zéro 
+% Si le pion choisi est différent du pion du joueur on recommence à zéro
 incrementeSiIdentique(Colonne, PionChoisi, Pion, _, TailleColonne) :-
 	PionChoisi \= Pion,
 	!,
@@ -97,7 +96,7 @@ enregistrerDansEvalColonne(NombrePionsAlignes) :-
 	append(ListeNombrePions, [NombrePionsAlignes], NouveauNombrePions),
 	retract(evalColonne(_)),
 	assert(evalColonne(NouveauNombrePions)).
-	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Vérification horizontale %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,15 +104,15 @@ enregistrerDansEvalColonne(NombrePionsAlignes) :-
 nbSeries3Horizontales(Pion, Nombre) :-
 	seriesHorizontales(Pion),
 	evalLigne(Eval),
-	nbElementsDansListe(Eval, 3, 1, 0), 
+	nbElementsDansListe(Eval, 3, 1, 0),
 	temp(X), nth1(1, X, Resultat),
 	Nombre is Resultat,
 	!.
-	
+
 nbSeries2Horizontales(Pion, Nombre) :-
 	seriesHorizontales(Pion),
 	evalLigne(Eval),
-	nbElementsDansListe(Eval, 2, 1, 0), 
+	nbElementsDansListe(Eval, 2, 1, 0),
 	temp(X), nth1(1, X, Resultat),
 	Nombre is Resultat,
 	!.
@@ -121,7 +120,7 @@ nbSeries2Horizontales(Pion, Nombre) :-
 nbSeries1Horizontales(Pion, Nombre) :-
 	seriesHorizontales(Pion),
 	evalLigne(Eval),
-	nbElementsDansListe(Eval, 1, 1, 0), 
+	nbElementsDansListe(Eval, 1, 1, 0),
 	temp(X), nth1(1, X, Resultat),
 	Nombre is Resultat,
 	!.
@@ -148,7 +147,7 @@ evalLignePleine(Ligne, _) :-
 	Resultat == 0,
 	!.
 
-% On vérifie s'il y a des 0 dans la liste, on a besoin de faire les vérifications	
+% On vérifie s'il y a des 0 dans la liste, on a besoin de faire les vérifications
 evalLignePleine(Ligne, Pion) :-
 	nbElementsDansListe(Ligne, 0, 1, 0),
 	temp(X), nth1(1, X, Resultat),
@@ -190,7 +189,7 @@ incrementeSiIdentique_H(Ligne, PionChoisi, Pion, PionsAlignes, Zeros, Iteration)
 	PionsAlignes2 is PionsAlignes + 1,
 	evalLigne_(Ligne, Pion, Iteration2, PionsAlignes2, Zeros2).
 
-% Si le pion choisi est différent du pion du joueur on recommence à zéro 
+% Si le pion choisi est différent du pion du joueur on recommence à zéro
 incrementeSiIdentique_H(_, PionChoisi, Pion, _, _, _) :-
 	PionChoisi \= Pion,
 	!.
@@ -246,7 +245,7 @@ recupererElementPourLigne(NumLigne, Colonne, Element) :-
 	NumLigne > TailleColonne,
 	!,
 	Element is 0.
-	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -261,7 +260,7 @@ nbElementsDansListe(Liste, _, Iteration, Nombre) :-
 	Iteration > TailleListe,
 	!,
 	retract(temp(_)), assert(temp([Nombre])).
-	
+
 nbElementsDansListe_(Liste, Element, Iteration, Nombre) :-
 	nth1(Iteration, Liste, ElementAComparer),
 	ElementAComparer == Element,
@@ -269,7 +268,7 @@ nbElementsDansListe_(Liste, Element, Iteration, Nombre) :-
 	Iteration2 is Iteration+1,
 	Nombre2 is Nombre+1,
 	nbElementsDansListe(Liste, Element, Iteration2, Nombre2).
-	
+
 nbElementsDansListe_(Liste, Element, Iteration, Nombre) :-
 	nth1(Iteration, Liste, ElementAComparer),
 	ElementAComparer \= Element,

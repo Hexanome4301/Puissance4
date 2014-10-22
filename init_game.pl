@@ -28,7 +28,8 @@
 :-include(verifications).
 :-include(ia).
 :-include(minMax).
+:-include(minMaxAmeliore).
 :-include(partie2Joueurs).
 :-include(pionsAlignes).
-%:-include(partieAleatoire).
+:-include(partieAleatoire).
 

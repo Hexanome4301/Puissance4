@@ -1,6 +1,7 @@
-iaRandom(Pion, Colonne) :-
-		random(1, 7, Colonne),
-		jouer(Pion, Colonne).
+iaRandom(Pion, Colonne,LigneDuNouvelElem) :-
+		gamestate(X), coupPossible(X,ListResult),
+		random_member(Colonne,ListResult),
+		jouer(Pion, Colonne,_,LigneDuNouvelElem).
 
 %condition d'arret de la recusion:
 coupPossible([],[]).
