@@ -262,10 +262,10 @@ checkTaille(L):-
 
 %regle envoyant un message d'erreur si la liste est deja égale à 6
 checkTaille(L):-
-	length(L,Nb), not(Nb<6),
+	length(L,Nb), Nb>=6,
 	gamestate(X),
 	coupPossible(X,CoupPossible),
 	ListColonne = [1,2,3,4,5,6,7],
-	subtract(ListColonne,CoupPossible,CoupPasPossible).
+	subtract(ListColonne,CoupPossible,_).
 
-	%write('Colonne(s) ') , write(CoupPasPossible) , write(' deja remplie(s), veuillez sélectionner une autre \n'),false.
+	%write('Colonne(s) ') , write(CoupPasPossible) , write(' deja remplie(s), veuillez sélectionner une autre \n').

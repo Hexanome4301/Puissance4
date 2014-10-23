@@ -39,7 +39,7 @@ testGagner2Joueurs(Pion,LigneDuNouvelElem,NumColonne) :-
 	  (sd(UnPion), Message = ' a gagné diagonalement')
 	),
 	Pion = UnPion,
-	%write(Pion), write(Message),
+	write(Pion), write(Message),
 	finPartie.
 
 % Deuxieme regle s'effectuant si la premiere n'a trouver aucun vainqueur (sh,sd,sv qui renvoient false chacun)

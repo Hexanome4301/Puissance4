@@ -18,7 +18,7 @@ partieIAvsIA(Pion,CoupDavance) :-
 
 partieIAameliorevsIAameliore :-
 	retract(gamestate(_)) , assert(gamestate([[],[],[],[],[],[],[]])),
-	partieIAvsIAameliore(x,4).
+	partieIAameliorevsIAameliore(x,4).
 
 partieIAameliorevsIAameliore(Pion,CoupDavance) :-
 	iaBigBoss(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
@@ -138,7 +138,7 @@ testGagner4(Pion, NumColonne,LigneDuNouvelElem, Y) :-
 	partieIAvsIAameliore(Adversaire,4,Y2),!.
 
 
-testGagner4(Pion, NumColonne,LigneDuNouvelElem, Y) :-
+testGagner4(Pion, NumColonne,LigneDuNouvelElem, _) :-
 	gamestate(X),
 	Ligne is LigneDuNouvelElem - 1,
 	Colonne is NumColonne-1,

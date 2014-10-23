@@ -32,7 +32,7 @@ testGagner5(Pion, NumColonne,LigneDuNouvelElem, Y) :-
 	partieIAvsRandom(Adversaire,4,Y2),!.
 
 
-testGagner5(Pion, NumColonne,LigneDuNouvelElem, Y) :-
+testGagner5(Pion, NumColonne,LigneDuNouvelElem, _) :-
 	gamestate(X),
 	Ligne is LigneDuNouvelElem - 1,
 	Colonne is NumColonne-1,
@@ -77,7 +77,7 @@ testGagner6(Pion, NumColonne,LigneDuNouvelElem, Y) :-
 	partieIaAmeliorevsRandom(Adversaire,4,Y2),!.
 
 
-testGagner6(Pion, NumColonne,LigneDuNouvelElem, Y) :-
+testGagner6(Pion, NumColonne,LigneDuNouvelElem, _) :-
 	gamestate(X),
 	Ligne is LigneDuNouvelElem - 1,
 	Colonne is NumColonne-1,
