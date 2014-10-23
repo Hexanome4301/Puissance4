@@ -57,7 +57,8 @@ simul(Joueur,ProfondeurEnCours,ListeDeCoup,ListPoids,MeilleurCoup):-
 	ListeDeCoup = [CoupActuel|Queue],
 
 	%sauvegarde du ctx actuel
-	gamestateTampon(GamestateEnCours),
+	%gamestateTampon(GamestateEnCours),
+	current_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours),
 
 	simulationCoup(Joueur,CoupActuel,NewGamestate),
 
@@ -66,8 +67,9 @@ simul(Joueur,ProfondeurEnCours,ListeDeCoup,ListPoids,MeilleurCoup):-
 	min(NewGamestate,Joueur,ProfondeurSuivante,PoidsCoupActuel),
 
 	%on revient a la configuration du jeu en cours pour simuler un prochain coup:
-	retract(gamestateTampon(_)),
-	assert(gamestateTampon(GamestateEnCours)),
+	%retract(gamestateTampon(_)),
+	%assert(gamestateTampon(GamestateEnCours)),
+	restore_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours),
 
 	%on simule le prochain coup possible
 	simul(Joueur,ProfondeurEnCours,Queue,ListPoidsCoupsSuivants,CoupSuivantAssocie),
@@ -114,7 +116,9 @@ simulAdversaire(Joueur,ProfondeurEnCours,ListeDeCoup,ListPoids,PireCoup):-
 	changerPion(Joueur,Adversaire),
 
 	%sauvegarde du ctx actuel
-	gamestateTampon(GamestateEnCours),
+	%gamestateTampon(GamestateEnCours),
+
+	current_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours),
 
 	simulationCoup(Adversaire,CoupActuel,NewGamestate),
 
@@ -123,8 +127,9 @@ simulAdversaire(Joueur,ProfondeurEnCours,ListeDeCoup,ListPoids,PireCoup):-
 	max(NewGamestate,Joueur,ProfondeurSuivante,PoidsCoupActuel),
 
 	%on revient a la configuration du jeu en cours:
-	retract(gamestateTampon(_)),
-	assert(gamestateTampon(GamestateEnCours)),
+	%retract(gamestateTampon(_)),
+	%assert(gamestateTampon(GamestateEnCours)),
+	restore_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours),
 
 	%on simule le prochain coup possible
 	simulAdversaire(Joueur,ProfondeurEnCours,Queue,ListPoidsCoupsSuivants, CoupSuivantAssocie),
@@ -162,3 +167,36 @@ init_gamestate:-
 	gamestate(X),
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon(X)).
+
+current_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours):-
+	gamestateTampon(GamestateEnCours),
+	diagInfSimul1(DiagInf1EnCours),
+	diagInfSimul2(DiagInf2EnCours),
+	diagInfSimul3(DiagInf3EnCours),
+	diagInfSimul4(DiagInf4EnCours),
+	diagInfSimul5(DiagInf5EnCours),
+	diagInfSimul6(DiagInf6EnCours),
+
+	diagSupSimul1(DiagSup1EnCours),
+	diagSupSimul2(DiagSup2EnCours),
+	diagSupSimul3(DiagSup3EnCours),
+	diagSupSimul4(DiagSup4EnCours),
+	diagSupSimul5(DiagSup5EnCours),
+	diagSupSimul6(DiagSup6EnCours).
+
+restore_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours):-
+	retract(gamestateTampon(_)),
+	assert(gamestateTampon(GamestateEnCours)),
+	retract(diagInfSimul1(_)),assert(diagInfSimul1(DiagInf1EnCours)),
+	retract(diagInfSimul2(_)),assert(diagInfSimul2(DiagInf2EnCours)),
+	retract(diagInfSimul3(_)),assert(diagInfSimul3(DiagInf3EnCours)),
+	retract(diagInfSimul4(_)),assert(diagInfSimul4(DiagInf4EnCours)),
+	retract(diagInfSimul5(_)),assert(diagInfSimul5(DiagInf5EnCours)),
+	retract(diagInfSimul6(_)),assert(diagInfSimul6(DiagInf6EnCours)),
+
+	retract(diagSupSimul1(_)),assert(diagSupSimul1(DiagSup1EnCours)),
+	retract(diagSupSimul2(_)),assert(diagSupSimul2(DiagSup2EnCours)),
+	retract(diagSupSimul3(_)),assert(diagSupSimul3(DiagSup3EnCours)),
+	retract(diagSupSimul4(_)),assert(diagSupSimul4(DiagSup4EnCours)),
+	retract(diagSupSimul5(_)),assert(diagSupSimul5(DiagSup5EnCours)),
+	retract(diagSupSimul6(_)),assert(diagSupSimul6(DiagSup6EnCours)).

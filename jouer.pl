@@ -145,8 +145,8 @@ simulationCoup(Jeton,1,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),	                       								%on retire la configuration du precedent gamestateTampon en donnee
 	assert(gamestateTampon([NewCol,C2,C3,C4,C5,C6,C7])), 								%on insere la nouvelle configuration de gamestateTampon en donnee
-	gamestateTampon(Newgamestate).                       								%on affiche en resultat l'etat du gamestateTampon apres le coup joue
-	%nth0(0, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,1,Jeton), insertInDiagSup(L,1,Jeton). 	%on insere l'élément qu on ajoute dans une diagonale
+	gamestateTampon(Newgamestate),                       								%on affiche en resultat l'etat du gamestateTampon apres le coup joue
+	nth0(0, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,1,Jeton).
 
 simulationCoup(Jeton,2,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, C1), nth0(1, X, ColChoisi), nth0(2, X, C3), nth0(3, X, C4), nth0(4, X, C5), nth0(5, X, C6), nth0(6, X, C7),
@@ -162,8 +162,9 @@ simulationCoup(Jeton,2,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon([C1,NewCol,C3,C4,C5,C6,C7])),
-	gamestateTampon(Newgamestate).
-	%nth0(1, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,2,Jeton), insertInDiagSup(L,2,Jeton).
+	gamestateTampon(Newgamestate),
+	nth0(1, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,2,Jeton).
+
 
 simulationCoup(Jeton,3,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, C1), nth0(1, X, C2), nth0(2, X, ColChoisi), nth0(3, X, C4),nth0(4, X, C5),nth0(5, X, C6), nth0(6, X, C7),
@@ -179,8 +180,9 @@ simulationCoup(Jeton,3,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon([C1,C2,NewCol,C4,C5,C6,C7])),
-	gamestateTampon(Newgamestate).
-	%nth0(2, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,3,Jeton), insertInDiagSup(L,3,Jeton).
+	gamestateTampon(Newgamestate),
+	nth0(2, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,3,Jeton).
+
 
 simulationCoup(Jeton,4,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, C1), nth0(1, X, C2), nth0(2, X, C3), nth0(3, X, ColChoisi), nth0(4, X, C5),nth0(5, X, C6), nth0(6, X, C7),
@@ -196,8 +198,9 @@ simulationCoup(Jeton,4,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon([C1,C2,C3,NewCol,C5,C6,C7])),
-	gamestateTampon(Newgamestate).
-	%nth0(3, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,4,Jeton), insertInDiagSup(L,4,Jeton).
+	gamestateTampon(Newgamestate),
+	nth0(3, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,4,Jeton).
+
 
 simulationCoup(Jeton,5,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, C1),nth0(1, X, C2), nth0(2, X, C3),nth0(3, X, C4),nth0(4, X, ColChoisi), nth0(5, X, C6), nth0(6, X, C7),
@@ -213,8 +216,9 @@ simulationCoup(Jeton,5,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon([C1,C2,C3,C4,NewCol,C6,C7])),
-	gamestateTampon(Newgamestate).
-	%nth0(4, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,5,Jeton), insertInDiagSup(L,5,Jeton).
+	gamestateTampon(Newgamestate),
+	nth0(4, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,5,Jeton).
+
 
 simulationCoup(Jeton,6,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, C1),nth0(1, X, C2),nth0(2, X, C3),nth0(3, X, C4),nth0(4, X, C5),nth0(5, X, ColChoisi), nth0(6, X, C7),
@@ -230,8 +234,9 @@ simulationCoup(Jeton,6,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon([C1,C2,C3,C4,C5,NewCol,C7])),
-	gamestateTampon(Newgamestate).
-	%nth0(5, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,6,Jeton), insertInDiagSup(L,6,Jeton).
+	gamestateTampon(Newgamestate),
+	nth0(5, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,6,Jeton).
+
 
 simulationCoup(Jeton,7,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, C1), nth0(1, X, C2), nth0(2, X, C3), nth0(3, X, C4), nth0(4, X, C5), nth0(5, X, C6), nth0(6, X, ColChoisi),
@@ -247,8 +252,9 @@ simulationCoup(Jeton,7,Newgamestate,LigneDuNouvelElem):-
 
 	retract(gamestateTampon(_)),
 	assert(gamestateTampon([C1,C2,C3,C4,C5,C6,NewCol])),
-	gamestateTampon(Newgamestate).
-	%nth0(6, Newgamestate, NewCol), length(NewCol, L), insertInDiagInf(L,7,Jeton), insertInDiagSup(L,7,Jeton).
+	gamestateTampon(Newgamestate),
+	nth0(6, Newgamestate, NewCol), length(NewCol, L), insertDiag(L,7,Jeton).
+
 
 % regle verifiant si la liste passe en parametre est bien inferieure a 6
 checkTaille(L):-

@@ -101,7 +101,6 @@ insertInDiagSup(Ligne, Colonne, Couleur) :-
 	diagSup5(X2), diagSup5Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSup5(X2)), assert(diagSup5(Z2));
 	diagSup6(X2), diagSup6Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSup6(X2)), assert(diagSup6(Z2))).
 
-
 displayAllDiags:-
 	listing(diagInf1),
 	listing(diagInf2),
@@ -133,7 +132,60 @@ insertDiag(Ligne, Colonne, Couleur):-
 insertDiag(_, _, _).
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 	Version simulation %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%		Version simulation 		%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-dynamic(diagInfSimul1/1).
+diagInfSimul1([[],[],[],[],[z],[z],[z]]).
+:-dynamic(diagInfSimul2/1).
+diagInfSimul2([[],[],[],[],[],[z],[z]]).
+:-dynamic(diagInfSimul3/1).
+diagInfSimul3([[],[],[],[],[],[],[z]]).
+:-dynamic(diagInfSimul4/1).
+diagInfSimul4([[z],[],[],[],[],[],[]]).
+:-dynamic(diagInfSimul5/1).
+diagInfSimul5([[z],[z],[],[],[],[],[]]).
+:-dynamic(diagInfSimul6/1).
+diagInfSimul6([[z],[z],[z],[],[],[],[]]).
+
+:-dynamic(diagSupSimul1/1).
+diagSupSimul1([[],[],[],[],[z],[z],[z]]).
+:-dynamic(diagSupSimul2/1).
+diagSupSimul2([[],[],[],[],[],[z],[z]]).
+:-dynamic(diagSupSimul3/1).
+diagSupSimul3([[],[],[],[],[],[],[z]]).
+:-dynamic(diagSupSimul4/1).
+diagSupSimul4([[z],[],[],[],[],[],[]]).
+:-dynamic(diagSupSimul5/1).
+diagSupSimul5([[z],[z],[],[],[],[],[]]).
+:-dynamic(diagSupSimul6/1).
+diagSupSimul6([[z],[z],[z],[],[],[],[]]).
+
+insertInDiagInfSimul(Ligne, Colonne, Couleur) :-
+
+(	diagInfSimul1(X1), diagInf1Elem(Y1), member([Ligne, Colonne], Y1), insertPosition(X1, Colonne, Couleur, Z1), retract(diagInfSimul1(X1)), assert(diagInfSimul1(Z1));
+	diagInfSimul2(X1), diagInf2Elem(Y1), member([Ligne, Colonne], Y1), insertPosition(X1, Colonne, Couleur, Z1), retract(diagInfSimul2(X1)), assert(diagInfSimul2(Z1));
+	diagInfSimul3(X1), diagInf3Elem(Y1), member([Ligne, Colonne], Y1), insertPosition(X1, Colonne, Couleur, Z1), retract(diagInfSimul3(X1)), assert(diagInfSimul3(Z1));
+	diagInfSimul4(X1), diagInf4Elem(Y1), member([Ligne, Colonne], Y1), insertPosition(X1, Colonne, Couleur, Z1), retract(diagInfSimul4(X1)), assert(diagInfSimul4(Z1));
+	diagInfSimul5(X1), diagInf5Elem(Y1), member([Ligne, Colonne], Y1), insertPosition(X1, Colonne, Couleur, Z1), retract(diagInfSimul5(X1)), assert(diagInfSimul5(Z1));
+	diagInfSimul6(X1), diagInf6Elem(Y1), member([Ligne, Colonne], Y1), insertPosition(X1, Colonne, Couleur, Z1), retract(diagInfSimul6(X1)), assert(diagInfSimul6(Z1))).
+
+insertInDiagSupSimul(Ligne, Colonne, Couleur) :-
+
+(	diagSupSimul1(X2), diagSup1Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSupSimul1(X2)), assert(diagSupSimul1(Z2));
+	diagSupSimul2(X2), diagSup2Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSupSimul2(X2)), assert(diagSupSimul2(Z2));
+	diagSupSimul3(X2), diagSup3Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSupSimul3(X2)), assert(diagSupSimul3(Z2));
+	diagSupSimul4(X2), diagSup4Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSupSimul4(X2)), assert(diagSupSimul4(Z2));
+	diagSupSimul5(X2), diagSup5Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSupSimul5(X2)), assert(diagSupSimul5(Z2));
+	diagSupSimul6(X2), diagSup6Elem(Y2), member([Ligne, Colonne], Y2), insertPosition(X2, Colonne, Couleur, Z2), retract(diagSupSimul6(X2)), assert(diagSupSimul6(Z2))).
+
+insertDiagSimul(Ligne, Colonne, Couleur):-
+	insertInDiagInfSimul(Ligne, Colonne, Couleur),
+	insertInDiagSupSimul(Ligne, Colonne, Couleur).
+
+insertDiagSimul(Ligne, Colonne, Couleur):-
+	insertInDiagSupSimul(Ligne, Colonne, Couleur),
+	insertInDiagInfSimul(Ligne, Colonne, Couleur).
+insertDiagSimul(_, _, _).
+
 
