@@ -266,6 +266,6 @@ checkTaille(L):-
 	gamestate(X),
 	coupPossible(X,CoupPossible),
 	ListColonne = [1,2,3,4,5,6,7],
-	subtract(ListColonne,CoupPossible,CoupPasPossible),
+	subtract(ListColonne,CoupPossible,CoupPasPossible).
 
-	write('Colonne(s) ') , write(CoupPasPossible) , write(' deja remplie(s), veuillez sélectionner une autre \n'),false.
+	%write('Colonne(s) ') , write(CoupPasPossible) , write(' deja remplie(s), veuillez sélectionner une autre \n'),false.
