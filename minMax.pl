@@ -166,7 +166,22 @@ max(GamestateEnCours,Joueur,0, Result):-
 init_gamestate:-
 	gamestate(X),
 	retract(gamestateTampon(_)),
-	assert(gamestateTampon(X)).
+	assert(gamestateTampon(X)),
+
+	diagInf1(DiagInf1),retract(diagInfSimul1(_)), assert(diagInfSimul1(DiagInf1)),
+	diagInf2(DiagInf2),retract(diagInfSimul2(_)), assert(diagInfSimul2(DiagInf2)),
+	diagInf3(DiagInf3),retract(diagInfSimul3(_)), assert(diagInfSimul3(DiagInf3)),
+	diagInf4(DiagInf4),retract(diagInfSimul4(_)), assert(diagInfSimul4(DiagInf4)),
+	diagInf5(DiagInf5),retract(diagInfSimul5(_)), assert(diagInfSimul5(DiagInf5)),
+	diagInf6(DiagInf6),retract(diagInfSimul6(_)), assert(diagInfSimul6(DiagInf6)),
+
+	diagSup1(DiagSup1),retract(diagSupSimul1(_)),assert(diagSupSimul1(DiagSup1)),
+	diagSup2(DiagSup2),retract(diagSupSimul2(_)),assert(diagSupSimul2(DiagSup2)),
+	diagSup3(DiagSup3),retract(diagSupSimul3(_)),assert(diagSupSimul3(DiagSup3)),
+	diagSup4(DiagSup4),retract(diagSupSimul4(_)),assert(diagSupSimul4(DiagSup4)),
+	diagSup5(DiagSup5),retract(diagSupSimul5(_)),assert(diagSupSimul5(DiagSup5)),
+	diagSup6(DiagSup6),retract(diagSupSimul6(_)),assert(diagSupSimul6(DiagSup6)).
+
 
 current_context(GamestateEnCours,DiagInf1EnCours,DiagInf2EnCours,DiagInf3EnCours,DiagInf4EnCours,DiagInf5EnCours,DiagInf6EnCours,DiagSup1EnCours,DiagSup2EnCours,DiagSup3EnCours,DiagSup4EnCours,DiagSup5EnCours,DiagSup6EnCours):-
 	gamestateTampon(GamestateEnCours),
