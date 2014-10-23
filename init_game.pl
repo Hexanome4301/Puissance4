@@ -33,6 +33,8 @@
 :-include(pionsAlignes).
 %:-include(partieAleatoire).
 :-include(partieIA).
+:-include(iavsrandom).
 :-include(testUnitaires).
 :-include(lancerNParties).
+
 

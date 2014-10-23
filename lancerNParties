@@ -1,3 +1,5 @@
+
+/* Commenter les affichages à l'écran */
 lancerNParties(N) :-
 	lancerNParties(1, N, 0, 0, 0), !.
 
