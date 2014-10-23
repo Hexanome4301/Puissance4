@@ -11,7 +11,7 @@ jouer(Jeton,1,Newgamestate,LigneDuNouvelElem):-
 	% on recupere toute les colonnes dans les variables
 	gamestate(X), nth0(0, X, ColChoisi), nth0(1, X, C2), nth0(2, X, C3), nth0(3, X, C4), nth0(4, X, C5), nth0(5, X, C6), nth0(6, X, C7),
 
-	checkTaille(ColChoisi), 
+	checkTaille(ColChoisi),
 	                      								%ici test si ColChoisi n'a pas deja 6 jetons
 	reverse(ColChoisi, Temp1),
 	append([Jeton],Temp1,Temp2),
@@ -135,7 +135,11 @@ simulationCoup(Jeton,1,Newgamestate,LigneDuNouvelElem):-
 	gamestateTampon(X), nth0(0, X, ColChoisi), nth0(1, X, C2), nth0(2, X, C3), nth0(3, X, C4), nth0(4, X, C5), nth0(5, X, C6), nth0(6, X, C7),
 
 	checkTaille(ColChoisi),                       								%ici test si ColChoisi n'a pas deja 6 jetons
-	append([Jeton],ColChoisi,NewCol),              								%ajout du nouveau jeton
+
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -149,7 +153,10 @@ simulationCoup(Jeton,2,Newgamestate,LigneDuNouvelElem):-
 
 	checkTaille(ColChoisi),
 
-	append([Jeton],ColChoisi,NewCol),
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -163,7 +170,10 @@ simulationCoup(Jeton,3,Newgamestate,LigneDuNouvelElem):-
 
 	checkTaille(ColChoisi),
 
-	append([Jeton],ColChoisi,NewCol),
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -177,7 +187,10 @@ simulationCoup(Jeton,4,Newgamestate,LigneDuNouvelElem):-
 
 	checkTaille(ColChoisi),
 
-	append([Jeton],ColChoisi,NewCol),
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -191,7 +204,10 @@ simulationCoup(Jeton,5,Newgamestate,LigneDuNouvelElem):-
 
 	checkTaille(ColChoisi),
 
-	append([Jeton],ColChoisi,NewCol),
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -205,7 +221,10 @@ simulationCoup(Jeton,6,Newgamestate,LigneDuNouvelElem):-
 
 	checkTaille(ColChoisi),
 
-	append([Jeton],ColChoisi,NewCol),
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -219,7 +238,10 @@ simulationCoup(Jeton,7,Newgamestate,LigneDuNouvelElem):-
 
 	checkTaille(ColChoisi),
 
-	append([Jeton],ColChoisi,NewCol),
+	reverse(ColChoisi, Temp1),
+	append([Jeton],Temp1,Temp2),
+	reverse(Temp2, NewCol),
+
 	length(NewCol,NewTaille),
 	LigneDuNouvelElem = NewTaille,
 
@@ -240,4 +262,4 @@ checkTaille(L):-
 	ListColonne = [1,2,3,4,5,6,7],
 	subtract(ListColonne,CoupPossible,CoupPasPossible),
 
-	write('La(Les) colonne(s) ') , write(CoupPasPossible) , write(' est(sont) deja rempli(s), veuillez sélectionner une autre \n'),false.
+	write('Colonne(s) ') , write(CoupPasPossible) , write(' deja remplie(s), veuillez sélectionner une autre \n'),false.
