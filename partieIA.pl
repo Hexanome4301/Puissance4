@@ -22,7 +22,7 @@ testGagner(Pion, NumColonne,LigneDuNouvelElem) :-
 	Ligne is LigneDuNouvelElem - 1,
 	Colonne is NumColonne-1,
 	not(sh(_,X,Ligne)),
-
+	not( sd(_)),
 	not(sv(_,X,Colonne)),
 
 	changerPion(Pion, Adversaire),
