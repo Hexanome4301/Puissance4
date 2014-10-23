@@ -130,7 +130,8 @@ insertDiag(Ligne, Colonne, Couleur):-
 insertDiag(Ligne, Colonne, Couleur):-
 	insertInDiagSup(Ligne, Colonne, Couleur),
 	insertInDiagInf(Ligne, Colonne, Couleur).
-insertDiag(Ligne, Colonne, Couleur).
+insertDiag(_, _, _).
+
 
 
 
