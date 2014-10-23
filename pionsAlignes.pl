@@ -48,7 +48,7 @@ seriesVerticales(Pion) :-
 
 % On effectue la vérification pour un pion et une colonne donnés
 nombrePionsAlignesVerticalement(NumColonne, Pion) :-
-	gamestate(X), nth1(NumColonne, X, Col),
+	gamestateTampon(X), nth1(NumColonne, X, Col),
 	% On renverse la colonne car on parcours à l'envers (depuis tailleColonne jusqu'à 0)
 	reverse(Col, Colonne),
 	length(Colonne, TailleColonne),
@@ -209,7 +209,7 @@ enregistrerDansEvalLigne(NombrePionsAlignes) :-
 	NombrePionsAlignes < 1.
 
 reconstitutionLigne(NumLigne, Ligne) :-
-	gamestate(Gamestate),
+	gamestateTampon(Gamestate),
 	nth1(1, Gamestate, C1), nth1(2, Gamestate, C2), nth1(3, Gamestate, C3), nth1(4, Gamestate, C4), nth1(5, Gamestate, C5), nth1(6, Gamestate, C6), nth1(7, Gamestate, C7),
 	recupererElementPourLigne(NumLigne, C1, E1),
 	recupererElementPourLigne(NumLigne, C2, E2),
@@ -279,19 +279,19 @@ nbSeries1Diagonales(Pion, Nombre) :-
 
 seriesDiagonales(Pion) :-
 	retract(evalDiagonale(_)), assert(evalDiagonale([])),
-	diagInf1(DiagInf1), evalDiagonale(DiagInf1, Pion),
-	diagInf2(DiagInf2), evalDiagonale(DiagInf2, Pion),
-	diagInf3(DiagInf3), evalDiagonale(DiagInf3, Pion),
-	diagInf4(DiagInf4), evalDiagonale(DiagInf4, Pion),
-	diagInf5(DiagInf5), evalDiagonale(DiagInf5, Pion),
-	diagInf6(DiagInf6), evalDiagonale(DiagInf6, Pion),
+	diagInfSimul1(DiagInfSimul1), evalDiagonale(DiagInfSimul1, Pion),
+	diagInfSimul2(DiagInfSimul2), evalDiagonale(DiagInfSimul2, Pion),
+	diagInfSimul3(DiagInfSimul3), evalDiagonale(DiagInfSimul3, Pion),
+	diagInfSimul4(DiagInfSimul4), evalDiagonale(DiagInfSimul4, Pion),
+	diagInfSimul5(DiagInfSimul5), evalDiagonale(DiagInfSimul5, Pion),
+	diagInfSimul6(DiagInfSimul6), evalDiagonale(DiagInfSimul6, Pion),
 
-	diagSup1(DiagSup1), evalDiagonale(DiagSup1, Pion),
-	diagSup2(DiagSup2), evalDiagonale(DiagSup2, Pion),
-	diagSup3(DiagSup3), evalDiagonale(DiagSup3, Pion),
-	diagSup4(DiagSup4), evalDiagonale(DiagSup4, Pion),
-	diagSup5(DiagSup5), evalDiagonale(DiagSup5, Pion),
-	diagSup6(DiagSup6), evalDiagonale(DiagSup6, Pion).
+	diagSupSimul1(DiagSupSimul1), evalDiagonale(DiagSupSimul1, Pion),
+	diagSupSimul2(DiagSupSimul2), evalDiagonale(DiagSupSimul2, Pion),
+	diagSupSimul3(DiagSupSimul3), evalDiagonale(DiagSupSimul3, Pion),
+	diagSupSimul4(DiagSupSimul4), evalDiagonale(DiagSupSimul4, Pion),
+	diagSupSimul5(DiagSupSimul5), evalDiagonale(DiagSupSimul5, Pion),
+	diagSupSimul6(DiagSupSimul6), evalDiagonale(DiagSupSimul6, Pion).
 
 evalDiagonale(Diagonale, Pion) :-
 	evalDiagonale(Diagonale, Pion, 0, 1).
