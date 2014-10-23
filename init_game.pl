@@ -33,4 +33,5 @@
 :-include(pionsAlignes).
 %:-include(partieAleatoire).
 :-include(partieIA).
+:-include(testUnitaires).
 

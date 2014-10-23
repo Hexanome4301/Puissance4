@@ -4,7 +4,7 @@
 
 %premiere ligne
 :-dynamic(gamestateTestHoriz11/1).
- gamestateTestHoriz11([[x],[x],[x],[x],[],[],[]]).
+ gamestateTestHoriz11(([x],[x],[x],[x],[],[],[]]).
 
 :-dynamic(gamestateTestHoriz12/1).
  gamestateTestHoriz12([[],[x],[x],[x],[x],[],[]]).
@@ -58,7 +58,7 @@ gamestateTestHoriz21([[x,o],[x,o],[x,o],[x,o],[],[],[]]).
 
 %premiere diagonale
 :-dynamic(diagInfTest1/1).
-diagInfTest1([[x],[x],[x],[x],[z],[z],[z]]).
+diagInfTest1([x,x,x,x,[z],[z],[z]]).
 
 %deuxieme diagonale
 :-dynamic(diagInfTest21/1).
@@ -164,8 +164,8 @@ diagSupTest6([[z],[z],[z],[x],[x],[x],[x]]).
 	%(gamestateTestVertic22(X),sv(x,X)),
 	%(gamestateTestVertic23(X),sv(x,X)).
 	
-%solutionDiagonaleInf:-
-	%(diagInfTest1(X),sd(x,X)),
+solutionDiagonaleInf:-
+	(diagInfTest1(X),retract(diagInf1(_)),assert(diagInf1(X), sd(x)),retract(diagInf1(_)), assert(diagInf1([[],[],[],[],[z],[z],[z]])).
 	%(diagInfTest21(X),sd(x,X)),
 	%(diagInfTest22(X),sd(x,X)),
 	%(diagInfTest31(X),sd(x,X)),
