@@ -34,4 +34,5 @@
 %:-include(partieAleatoire).
 :-include(partieIA).
 :-include(testUnitaires).
+:-include(lancerNParties).
 

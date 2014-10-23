@@ -13,7 +13,7 @@ partieIAvsIA :-
 
 partieIAvsIA(Pion,CoupDavance) :-
 	iaMinMax(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
-	afficherGrille,
+	%afficherGrille,
 	testGagner2(Pion, NumColonne,LigneDuNouvelElem).
 
 
@@ -26,8 +26,8 @@ testGagner(Pion, NumColonne,LigneDuNouvelElem) :-
 	not(sv(_,X,Colonne)),
 
 	changerPion(Pion, Adversaire),
-	write('\n Au tour de '),write(Adversaire), write(' de jouer\n'),
-	sleep(2),
+	%write('\n Au tour de '),write(Adversaire), write(' de jouer\n'),
+	%sleep(2),
 	partieAleatoire(Adversaire),!.
 
 
@@ -43,7 +43,7 @@ testGagner(Pion, NumColonne,LigneDuNouvelElem) :-
 	  (sd(UnPion), Message = ' a gagné diagonalement')
 	),
 	Pion = UnPion,
-	write(Pion), write(Message),
+	%write(Pion), write(Message),
 	finPartie.
 
 testGagner2(Pion, NumColonne,LigneDuNouvelElem) :-
@@ -55,8 +55,8 @@ testGagner2(Pion, NumColonne,LigneDuNouvelElem) :-
 	not(sv(_,X,Colonne)),
 
 	changerPion(Pion, Adversaire),
-	write('\n Au tour de '),write(Adversaire), write(' de jouer\n'),
-	sleep(2),
+	%write('\n Au tour de '),write(Adversaire), write(' de jouer\n'),
+	%sleep(2),
 	partieIAvsIA(Adversaire,2),!.
 
 
@@ -69,5 +69,20 @@ testGagner2(Pion, NumColonne,LigneDuNouvelElem) :-
 	  (sd(UnPion), Message = ' a gagné diagonalement')
 	),
 	Pion = UnPion,
-	write(Pion), write(Message),
+	%write(Pion), write(Message),
 	finPartie.
+
+testPionGagnant(Pion, Adversaire, X) :-
+	(sd(Pion) ; sh(Pion) ; sv(Pion)), not(sd(Adversaire)), not(sh(Adversaire)), not(sv(Adversaire)),
+	!,
+	X is 1.
+
+testPionGagnant(Pion, Adversaire, X) :-
+	not(sd(Pion)), not(sh(Pion)), not(sv(Pion)), (sd(Adversaire) ; sh(Adversaire) ; sv(Adversaire)),
+	!,
+	X is 2.
+
+testPionGagnant(Pion, Adversaire, X) :-
+	not(sd(Pion)), not(sh(Pion)), not(sv(Pion)), not(sd(Adversaire)), not(sh(Adversaire)), not(sv(Adversaire)),
+	!,
+	X is 3.

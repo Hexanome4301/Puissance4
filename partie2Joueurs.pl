@@ -39,7 +39,7 @@ testGagner2Joueurs(Pion,LigneDuNouvelElem,NumColonne) :-
 	  (sd(UnPion), Message = ' a gagné diagonalement')
 	),
 	Pion = UnPion,
-	write(Pion), write(Message),
+	%write(Pion), write(Message),
 	finPartie.
 
 % Deuxieme regle s'effectuant si la premiere n'a trouver aucun vainqueur (sh,sd,sv qui renvoient false chacun)
@@ -67,8 +67,8 @@ finPartie :-
 	retract(diagSup3(_)) , assert(diagSup3([[],[],[],[],[],[],[z]])),
 	retract(diagSup4(_)) , assert(diagSup4([[z],[],[],[],[],[],[]])),
 	retract(diagSup5(_)) , assert(diagSup5([[z],[z],[],[],[],[],[]])),
-	retract(diagSup6(_)) , assert(diagSup6([[z],[z],[z],[],[],[],[]])),
-	retract(gamestate(_)) , assert(gamestate([[],[],[],[],[],[],[]])).
+	retract(diagSup6(_)) , assert(diagSup6([[z],[z],[z],[],[],[],[]])).
+	%retract(gamestate(_)) , assert(gamestate([[],[],[],[],[],[],[]])).
 
 changerPion(x, NouveauPion) :-
 	NouveauPion = o.
