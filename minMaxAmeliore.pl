@@ -50,13 +50,12 @@ iaBigBoss(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,ListPoids):-
 	coupPossible(X,ListeDeCoup),
 
 	simul2(Joueur,CoupDAvance,ListeDeCoup,ListPoids,MeilleurCoup),
-	joueIa2(Joueur,MeilleurCoup,ListPoids,LigneDuNouvelElem).
+	joueIa2(Joueur,MeilleurCoup,LigneDuNouvelElem).
 
-joueIa2(Joueur,_,ListPoids,LigneDuNouvelElem):-
-	subtract(ListPoids,[-1000000],TrueListPoids),
-	gamestate(X),subtract(TrueListPoids,[0],[]),X=[[],[],[],[],[],[],[]],jouer(Joueur,4,_,LigneDuNouvelElem), ! .
+joueIa2(Joueur,_,LigneDuNouvelElem):-
+	gamestate(X),X=[[],[],[],[],[],[],[]],jouer(Joueur,4,_,LigneDuNouvelElem), ! .
 
-joueIa2(Joueur,MeilleurCoup,_,LigneDuNouvelElem):-
+joueIa2(Joueur,MeilleurCoup,LigneDuNouvelElem):-
 	jouer(Joueur,MeilleurCoup,_,LigneDuNouvelElem),!.
 
 simul2(_,_,[],Poids,4):-

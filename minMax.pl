@@ -34,9 +34,8 @@ iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,ListPoids):-
 	joueIa(Joueur,MeilleurCoup,ListPoids,LigneDuNouvelElem).
 
 % Determine si l'IA doit jouer au milieu pour un premier tour, jouer de façon prémédité ou bien de façon aléatoire
-joueIa(Joueur,_,ListPoids,LigneDuNouvelElem):-
-	subtract(ListPoids,[-1000000],TrueListPoids),
-	gamestate(X),subtract(TrueListPoids,[0],[]),X=[[],[],[],[],[],[],[]],jouer(Joueur,4,_,LigneDuNouvelElem), ! .
+joueIa(Joueur,_,_,LigneDuNouvelElem):-
+	gamestate(X),X=[[],[],[],[],[],[],[]],jouer(Joueur,4,_,LigneDuNouvelElem), ! .
 
 joueIa(Joueur,_,ListPoids,LigneDuNouvelElem):-
 	subtract(ListPoids,[-1000000],TrueListPoids),
