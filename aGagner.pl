@@ -141,8 +141,8 @@ sd(Pion) :-
 % Version fonctionnnant avec LA grille de jeu reelle
 solution(Pion) :-
 	sv(Pion);
-	sh(Pion).
-	%sd(Pion).
+	sh(Pion);
+	sd(Pion).
 
 % Version permettant de renseigner une grille specifique.
 solution(Pion,GamestateEnCours) :-

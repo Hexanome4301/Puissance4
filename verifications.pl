@@ -1,4 +1,4 @@
-	
+
 % Declaration des diagonales inferieures ainsi que leurs positions.
 :-dynamic(diagInf1/1).
 diagInf1([[],[],[],[],[z],[z],[z]]).
@@ -116,7 +116,7 @@ displayAllDiags:-
 	listing(diagSup5),
 	listing(diagSup6).
 
-accReverse([ ],L,L). 
+accReverse([ ],L,L).
 accReverse([H|T],Acc,Rev):-
 accReverse(T,[H|Acc],Rev).
 
@@ -133,5 +133,7 @@ insertDiag(Ligne, Colonne, Couleur):-
 insertDiag(_, _, _).
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 	Version simulation %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

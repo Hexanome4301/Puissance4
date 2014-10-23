@@ -39,7 +39,8 @@ testGagner(Pion, NumColonne,LigneDuNouvelElem) :-
 	% En principe si il y a vainqueur UnPion forcement est egale a Pion
 
 	( (sh(UnPion,X,Ligne),Message = ' a gagné horizontalement');
-	  (sv(UnPion,X,Colonne), Message = ' a gagné verticalement')
+	  (sv(UnPion,X,Colonne), Message = ' a gagné verticalement');
+	  (sd(UnPion), Message = ' a gagné diagonalement')
 	),
 	Pion = UnPion,
 	write(Pion), write(Message),
@@ -64,7 +65,8 @@ testGagner2(Pion, NumColonne,LigneDuNouvelElem) :-
 	Ligne is LigneDuNouvelElem - 1,
 	Colonne is NumColonne-1,
 	( (sh(UnPion,X,Ligne),Message = ' a gagné horizontalement');
-	  (sv(UnPion,X,Colonne), Message = ' a gagné verticalement')
+	  (sv(UnPion,X,Colonne), Message = ' a gagné verticalement');
+	  (sd(UnPion), Message = ' a gagné diagonalement')
 	),
 	Pion = UnPion,
 	write(Pion), write(Message),

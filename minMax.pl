@@ -20,6 +20,8 @@ eval(GamestateEnCours,_,Score):-
 % C'est a partir de ce nouvel etat de jeu que l'adversaire devra jouer un coup. Il cherchera donc a minimiser notre score.
 % Parmi tous les score min (proposé par l'adversaire) qui s'offrent à l'IA,
 % faudra qu'il choisisse le plus élevé (car il veut maximiser son score).
+iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem):-
+	iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,_).
 iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,ListPoids):-
 	gamestate(X),
 
@@ -34,7 +36,7 @@ iaMinMax(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,ListPoids):-
 % Determine si l'IA doit jouer au milieu pour un premier tour, jouer de façon prémédité ou bien de façon aléatoire
 joueIa(Joueur,_,ListPoids,LigneDuNouvelElem):-
 	subtract(ListPoids,[-1000000],TrueListPoids),
-	gamestate(X),subtract(TrueListPoids,[0],[]),X=[[],[],[],[],[],[],[]],jouer(Joueur,4,LigneDuNouvelElem), ! .
+	gamestate(X),subtract(TrueListPoids,[0],[]),X=[[],[],[],[],[],[],[]],jouer(Joueur,4,_,LigneDuNouvelElem), ! .
 
 joueIa(Joueur,_,ListPoids,LigneDuNouvelElem):-
 	subtract(ListPoids,[-1000000],TrueListPoids),
@@ -42,7 +44,7 @@ joueIa(Joueur,_,ListPoids,LigneDuNouvelElem):-
 
 joueIa(Joueur,MeilleurCoup,ListPoids,LigneDuNouvelElem):-
 	subtract(ListPoids,[-1000000],TrueListPoids),
-	not(subtract(TrueListPoids,[0],[])), jouer(Joueur,MeilleurCoup,LigneDuNouvelElem),!.
+	not(subtract(TrueListPoids,[0],[])), jouer(Joueur,MeilleurCoup,_,LigneDuNouvelElem),!.
 
 %condition d'arret:
 %Lorsqu'il n'y a plus de coup possible a jouer -> [].
