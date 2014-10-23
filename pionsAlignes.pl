@@ -309,14 +309,15 @@ evalDiagonale(Diagonale, Pion, PionsAlignes, Iteration) :-
 
 
 incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, _, Iteration) :-
-	PionChoisi == [Pion],
+	PionChoisi == Pion,
 	!,
 	Iteration2 is Iteration + 1,
 	PionsAlignes2 is PionsAlignes + 1,
 	evalDiagonale(Diagonale, Pion, PionsAlignes2, Iteration2).
 
 incrementeSiIdentique_D(Diagonale, PionChoisi, Pion, PionsAlignes, _, Iteration) :-
-	PionChoisi \= [Pion],
+	Z =z,
+	PionChoisi \= Pion, PionChoisi \= Z,
 	!,
 	Iteration2 is Iteration + 1,
 	enregistrerDansEvalDiagonale(PionsAlignes),
