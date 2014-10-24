@@ -21,7 +21,7 @@ partieIAameliorevsIAameliore :-
 	partieIAameliorevsIAameliore(x,4).
 
 partieIAameliorevsIAameliore(Pion,CoupDavance) :-
-	iaBigBoss(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
+	iaMinMaxAmelioree(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
 	afficherGrille,
 	testGagner3(Pion, NumColonne,LigneDuNouvelElem).
 
@@ -32,7 +32,7 @@ partieIAvsIAameliore :-
 partieIAvsIAameliore(Pion,CoupDavance, X) :-
 	(1 is mod(X, 2)),
 	!,
-	iaBigBoss(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
+	iaMinMaxAmelioree(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
 	afficherGrille,
 	testGagner4(Pion, NumColonne,LigneDuNouvelElem, X).
 
@@ -51,7 +51,7 @@ partieIAvsIAameliore(Pion,CoupDavance, X) :-
 partieIaAmeliorevsRandom(Pion,CoupDavance,X) :-
 	(1 is mod(X, 2)),
 	!,
-	iaBigBoss(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
+	iaMinMaxAmelioree(Pion,CoupDavance,NumColonne,LigneDuNouvelElem),
 	afficherGrille,
 	testGagner6(Pion, NumColonne,LigneDuNouvelElem,X).
 
@@ -243,17 +243,4 @@ testGagner6(Pion, NumColonne,LigneDuNouvelElem, _) :-
 	Pion = UnPion,
 	write(Pion), write(Message),
 	finPartie.
-testPionGagnant(Pion, Adversaire, X) :-
-	(sd(Pion) ; sh(Pion) ; sv(Pion)), not(sd(Adversaire)), not(sh(Adversaire)), not(sv(Adversaire)),
-	!,
-	X is 1.
 
-testPionGagnant(Pion, Adversaire, X) :-
-	not(sd(Pion)), not(sh(Pion)), not(sv(Pion)), (sd(Adversaire) ; sh(Adversaire) ; sv(Adversaire)),
-	!,
-	X is 2.
-
-testPionGagnant(Pion, Adversaire, X) :-
-	not(sd(Pion)), not(sh(Pion)), not(sv(Pion)), not(sd(Adversaire)), not(sh(Adversaire)), not(sv(Adversaire)),
-	!,
-	X is 3.

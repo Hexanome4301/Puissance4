@@ -40,9 +40,9 @@ eval2(GamestateEnCours,Joueur,Score):-
 	Score is (5*(Nb3Joueur) + 2*(Nb2Joueur)) - (5*(Nb3Advers) + 2*(Nb2Advers)).
 
 
-iaBigBoss(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem):-
-	iaBigBoss(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,_).
-iaBigBoss(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,ListPoids):-
+iaMinMaxAmelioree(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem):-
+	iaMinMaxAmelioree(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,_).
+iaMinMaxAmelioree(Joueur,CoupDAvance,MeilleurCoup,LigneDuNouvelElem,ListPoids):-
 	gamestate(X),
 
 	init_gamestate,

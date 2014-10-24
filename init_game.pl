@@ -15,7 +15,6 @@
 
 :-dynamic(gamestateTest/1).
  gamestateTest([[x],[x],[],[],[x],[o],[x]]).
- %gamestateTest([[],[],[x],[x],[],[],[]]).
 
 
 %inclut les clauses des fichiers jouer.pl et aGagner.pl
@@ -30,8 +29,7 @@
 :-include(minMax).
 :-include(minMaxAmeliore).
 :-include(partie2Joueurs).
-:-include(pionsAlignes).
-%:-include(partieAleatoire).
+:-include(evaluationIaAmelioree).
 :-include(partieIA).
 :-include(testUnitaires).
 :-include(lancerNParties).
